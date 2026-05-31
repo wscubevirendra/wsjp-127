@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            border: 2px solid red;
+        }
+
+       
+    </style>
+</head>
+
+<body>
+    <div class="box">
+      
+    </div>
+    <button onclick="demo()">Click</button>
+
+    <script>
+        const box = document.querySelector(".box");
+
+
+        function demo() {
+           box.style.backgroundColor="green";
+           box.style.transform="scale(2)"
+        }
+
+
+    </script>
+
+</body>
+
+</html>

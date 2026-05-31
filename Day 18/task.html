@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .circle {
+            width: 200px;
+            height: 200px;
+            border: 10px solid red;
+            border-radius: 50%;
+            margin: 100px auto;
+            border-right-color: green;
+            animation: loader 500ms infinite ease;
+        }
+
+        @keyframes loader {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="circle">
+
+    </div>
+
+</body>
+
+</html>

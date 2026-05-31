@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lightbox Project</title>
+
+<style>
+    body {
+        font-family: Arial;
+        text-align: center;
+    }
+
+    .gallery img {
+        width: 200px;
+        margin: 10px;
+        cursor: pointer;
+        border-radius: 10px;
+        transition: 0.3s;
+    }
+
+    .gallery img:hover {
+        transform: scale(1.05);
+    }
+
+    /* Lightbox */
+    .lightbox {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.8);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .lightbox img {
+        width: 500px;
+        border-radius: 10px;
+    }
+
+    #close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        color: white;
+        font-size: 35px;
+        cursor: pointer;
+    }
+
+    .controls {
+        margin-top: 20px;
+    }
+
+    .controls button {
+        padding: 10px 20px;
+        margin: 5px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+    }
+</style>
+
+</head>
+
+<body>
+
+<h1>Image Gallery Lightbox</h1>
+
+<div class="gallery">
+    <img src="https://picsum.photos/id/101/400" class="img">
+    <img src="https://picsum.photos/id/102/400" class="img">
+    <img src="https://picsum.photos/id/103/400" class="img">
+    <img src="https://picsum.photos/id/104/400" class="img">
+</div>
+
+<div class="lightbox" id="lightbox">
+    <span id="close">&times;</span>
+    <img id="lightbox-img">
+
+    <div class="controls">
+        <button id="prev">Prev</button>
+        <button id="next">Next</button>
+    </div>
+</div>
+
+<script>
+const images = document.querySelectorAll(".img");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+const close = document.getElementById("close");
+const next = document.getElementById("next");
+const prev = document.getElementById("prev");
+
+let currentIndex = 0;
+
+// Open Lightbox
+images.forEach((img, index) => {
+    img.addEventListener("click", () => {
+        currentIndex = index;
+        showImage();
+        lightbox.style.display = "flex";
+    });
+});
+
+function showImage() {
+    lightboxImg.src = images[currentIndex].src;
+}
+
+// Close
+close.addEventListener("click", () => {
+    lightbox.style.display = "none";
+});
+
+// Outside click close
+lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) {
+        lightbox.style.display = "none";
+    }
+});
+
+// Next
+next.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    showImage();
+});
+
+// Prev
+prev.addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage();
+});
+
+// Keyboard Support
+document.addEventListener("keydown", (e) => {
+    if (lightbox.style.display === "flex") {
+        if (e.key === "Escape") lightbox.style.display = "none";
+        if (e.key === "ArrowRight") next.click();
+        if (e.key === "ArrowLeft") prev.click();
+    }
+});
+</script>
+
+</body>
+</html>

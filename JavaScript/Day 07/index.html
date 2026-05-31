@@ -1,0 +1,97 @@
+<script>
+    // let array = [10, 20, 30, 40];
+    // let newArray = [];
+    // for (let i = array.length - 1; i >= 0; i--) {
+    //     // newArray.push(array[i])
+
+    // }
+    // console.log(newArray)
+
+
+    // let array = [1, 2, 3, 4, 5]
+    // // Output: Even = 2, Odd = 3
+    // let Even = 0;
+    // let Odd = 0;
+
+    // for (let i = 0; i <= array.length - 1; i++) {
+    //     if (array[i] % 2 == 0) {
+    //         Even++
+    //     } else {
+    //         Odd++
+    //     }
+    // }
+
+    // console.log(`Total Even Number Count is ${Even} `) //Expression `is top ${}`
+
+
+    // let array = [10, 20, 30, 40];  //100
+    // let sum = 0;  //60
+    // for (let data of array) {
+    //     sum = sum + data
+    //     //sum=0+10=10
+    //     //sum=10+20=30
+    //     //sum=30+30=60
+    //     //sum=60+40=100
+    // }
+
+    // console.log(sum)
+
+    // let array1 = [10, 20, 30, 40];
+    // let array2 = [100, 200, 300];
+    // let newArray = [];
+    // //[10,20,30,40,100,200,300]
+
+    // for (let data of array1) {
+    //     newArray.push(data)
+    // }
+
+    // for (let data of array2) {
+    //     newArray.push(data)
+    // }
+
+    // console.log(newArray)
+
+    // let indianActors = ["Shah Rukh Khan", "Salman Khan", "Amitabh Bachchan", "Aamir Khan", "Akshay Kumar", "Hrithik Roshan"];
+    // console.log(indianActors.includes("Shah Rukh Khan"))
+
+    // let findElement = false;
+    // let search = "Salman Khan";
+
+    // for (let actor of indianActors) {
+    //     if (actor == search) {
+    //         findElement = true;
+    //         break
+    //     }
+    // }
+
+    // if (findElement) {
+    //     console.log("Top Actor ")
+    // } else {
+    //     console.log("Not Listed in Top actor list")
+    // }
+
+    let array = [100, 200, 300, 400, 500, 500];
+    let search = Number(prompt("find Element"));
+
+    if (array.includes(search)) {
+        for (let i = 0; i < array.length; i++) {
+            if (array[i] === search) {
+                console.log(i)
+                break
+            }
+        }
+    } else {
+        console.log("Element not present")
+    }
+
+
+
+
+
+
+
+
+
+
+
+</script>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 200px;
+            padding: 20px;
+            box-shadow: 2px 2px 2px gray;
+            background-color: #eee;
+            margin: 50px auto;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <button>Start</button>
+        <h2>0</h2>
+        <button>Stop</button>
+    </div>
+
+    <script>
+        const h2 = document.querySelector(".container h2");
+        const btn = document.querySelectorAll("button");
+        let count = 0;
+        let myInterval = null;
+
+        btn[0].addEventListener(
+            "click",
+            function () {
+                myInterval = setInterval(
+                    function () {
+                        count++;
+                        h2.innerText = count
+                    }, 1000
+                )
+
+                btn[0].disabled = true
+            },
+        )
+
+        btn[1].addEventListener("click",
+            function () {
+                clearInterval(myInterval)
+                btn[0].disabled = false;
+            }
+        )
+
+
+
+    </script>
+
+</body>
+
+</html>

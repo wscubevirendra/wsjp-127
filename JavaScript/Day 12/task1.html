@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            color: white;
+            font-size: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        10
+    </div>
+    <button onclick="changeNumber()">Next</button>
+
+    <script>
+        const box = document.querySelector('.box');
+        function changeNumber() {
+            box.style.transform = 'translateX(100px)';
+        }
+    </script>
+
+</body>
+
+</html>

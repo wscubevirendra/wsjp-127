@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .clock {
+            width: 400px;
+            padding: 20px;
+            box-shadow: 0px 2px 2px gray;
+            background-color: #ff7b00;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            flex-direction: column;
+        }
+
+        .days {
+            display: flex;
+            gap: 20px;
+        }
+
+        .days span {
+            color: black;
+            font-weight: bold;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        .current {
+            color: white !important;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="clock">
+        <h1>10:34:50</h1>
+        <div class="days">
+
+        </div>
+    </div>
+
+    <script>
+        const h1 = document.querySelector(".clock h1");
+        const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+        const day_container = document.querySelector(".days")
+
+        function clock() {
+            const d = new Date();
+            let h = d.getHours();
+            let m = d.getMinutes();
+            let s = d.getSeconds();
+            day_container.innerHTML = ""
+
+            if (h < 10) h = "0" + h;
+            if (m < 10) m = "0" + m;
+            if (s < 10) s = "0" + s;
+            h1.innerText = `${h}:${m}:${s}`
+
+
+            for (let i = 0; i < days.length; i++) {
+                const span = document.createElement("span");
+                if (i == d.getDay()) {
+                    span.classList.add('current')
+                }
+                span.innerText = days[i];
+                day_container.appendChild(span)
+            }
+
+        }
+
+        setInterval(
+            clock,
+            1000
+        );
+    </script>
+
+</body>
+
+</html>

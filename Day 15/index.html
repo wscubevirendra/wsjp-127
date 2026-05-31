@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            width: 100%;
+            height: 82px;
+            box-shadow: 0 4px 12px 0 rgba(0, 0, 0, .05);
+            background-color: white;
+            position: sticky;
+            top: 0;
+            left: 0;
+            z-index: 12343243243;
+
+        }
+
+        .header-container {
+            width: 1200px;
+            height: 100%;
+            /* border: 2px solid red; */
+            margin: auto;
+            position: relative;
+
+        }
+
+        .banner {
+            width: 1200px;
+            margin: auto;
+        }
+
+        .top-banner {
+            width: 1200px;
+            height: 300px;
+            display: flex;
+            margin: auto;
+        }
+
+        .slider {
+            width: 1200px;
+            height: 305px;
+            /* border: 2px solid red; */
+            margin: 40px auto;
+            display: flex;
+            justify-content: space-between;
+
+        }
+
+        .box {
+            width: 232px;
+            height: 305px;
+
+            top: 0;
+        }
+
+        .box img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .middle-container {
+            width: 100%;
+            border: 2px solid red;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+
+        }
+
+        .card {
+            width: 15%;
+        }
+
+        .menu-container {
+            width: 100%;
+            position: absolute;
+            height: 300px;
+            /* border: 2px solid red; */
+            background-color: gray;
+            box-shadow: 2px p2x 2px gray;
+            top: 80px;
+            opacity: 0;
+            visibility: hidden;
+            transition: 400ms;
+        }
+
+        .item:hover .menu-container{
+            opacity: 1;
+            visibility: visible;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+
+        <div class="header-container">
+            <a class="item" href="">Men
+                <div class="menu-container">
+
+                </div>
+            </a>
+        </div>
+
+
+
+    </header>
+    <div class="banner">
+        <img width="100%" height="100%"
+            src="https://assets.myntassets.com/f_webp,w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2026/MARCH/11/LDrJs9Yc_dad0de4e3ca3423ab1ec2343288e3597.jpg"
+            alt="">
+    </div>
+    <div class="top-banner">
+        <img src="https://assets.myntassets.com/f_webp,w_490,c_limit,fl_progressive,dpr_2.0/assets/images/2026/MARCH/13/eIPg95dk_8dacf966761f4c818f014f5beafc17bc.png"
+            alt="">
+        <img src="https://assets.myntassets.com/f_webp,w_490,c_limit,fl_progressive,dpr_2.0/assets/images/2026/MARCH/13/ZxClXPfQ_39a21c2b55424df4abfb86c1c1e0addc.png"
+            alt="">
+    </div>
+    <div class="slider">
+        <div class="box">
+            <img src="https://assets.myntassets.com/f_webp,w_196,c_limit,fl_progressive,dpr_2.0/assets/images/2026/FEBRUARY/24/43Gub63E_73c8b3c5637a4ee9b1cd0446ee6f1a95.png"
+                alt="">
+        </div>
+        <div class="box">
+            <img src="https://assets.myntassets.com/f_webp,w_196,c_limit,fl_progressive,dpr_2.0/assets/images/2026/FEBRUARY/24/43Gub63E_73c8b3c5637a4ee9b1cd0446ee6f1a95.png"
+                alt="">
+        </div>
+        <div class="box">
+            <img src="https://assets.myntassets.com/f_webp,w_196,c_limit,fl_progressive,dpr_2.0/assets/images/2026/FEBRUARY/24/43Gub63E_73c8b3c5637a4ee9b1cd0446ee6f1a95.png"
+                alt="">
+        </div>
+        <div class="box">
+            <img src="https://assets.myntassets.com/f_webp,w_196,c_limit,fl_progressive,dpr_2.0/assets/images/2026/FEBRUARY/24/43Gub63E_73c8b3c5637a4ee9b1cd0446ee6f1a95.png"
+                alt="">
+        </div>
+        <div class="box">
+            <img src="https://assets.myntassets.com/f_webp,w_196,c_limit,fl_progressive,dpr_2.0/assets/images/2026/FEBRUARY/24/43Gub63E_73c8b3c5637a4ee9b1cd0446ee6f1a95.png"
+                alt="">
+        </div>
+
+
+    </div>
+    <section class="middle-container">
+        <div class="card">
+            <img src="https://assets.myntassets.com/f_webp,w_163,c_limit,fl_progressive,dpr_2.0/assets/images/2026/FEBRUARY/26/2MT2bua5_c24335b9d32546699999d94d94a7019f.jpg"
+                alt="" width="100%">
+        </div>
+        <a href="">
+            <div class="card">
+                <img src="https://assets.myntassets.com/f_webp,w_163,c_limit,fl_progressive,dpr_2.0/assets/images/2026/FEBRUARY/26/oiteLFfD_f01a63437dca47a09b12b83f49476392.jpg"
+                    alt="" width="100%">
+            </div>
+        </a>
+        <div class="card">
+            <img src="https://assets.myntassets.com/f_webp,w_163,c_limit,fl_progressive,dpr_2.0/assets/images/2026/FEBRUARY/26/2MT2bua5_c24335b9d32546699999d94d94a7019f.jpg"
+                alt="" width="100%">
+        </div>
+        <div class="card">
+            <img src="https://assets.myntassets.com/f_webp,w_163,c_limit,fl_progressive,dpr_2.0/assets/images/2026/FEBRUARY/26/2MT2bua5_c24335b9d32546699999d94d94a7019f.jpg"
+                alt="" width="100%">
+        </div>
+        <div class="card">
+            <img src="https://assets.myntassets.com/f_webp,w_163,c_limit,fl_progressive,dpr_2.0/assets/images/2026/FEBRUARY/26/2MT2bua5_c24335b9d32546699999d94d94a7019f.jpg"
+                alt="" width="100%">
+        </div>
+        <div class="card">
+            <img src="https://assets.myntassets.com/f_webp,w_163,c_limit,fl_progressive,dpr_2.0/assets/images/2026/FEBRUARY/26/2MT2bua5_c24335b9d32546699999d94d94a7019f.jpg"
+                alt="" width="100%">
+        </div>
+        <div class="card">
+            <img src="https://assets.myntassets.com/f_webp,w_163,c_limit,fl_progressive,dpr_2.0/assets/images/2026/FEBRUARY/26/2MT2bua5_c24335b9d32546699999d94d94a7019f.jpg"
+                alt="" width="100%">
+        </div>
+        <div class="card">
+            <img src="https://assets.myntassets.com/f_webp,w_163,c_limit,fl_progressive,dpr_2.0/assets/images/2026/FEBRUARY/26/2MT2bua5_c24335b9d32546699999d94d94a7019f.jpg"
+                alt="" width="100%">
+        </div>
+        <div class="card">
+            <img src="https://assets.myntassets.com/f_webp,w_163,c_limit,fl_progressive,dpr_2.0/assets/images/2026/FEBRUARY/26/2MT2bua5_c24335b9d32546699999d94d94a7019f.jpg"
+                alt="" width="100%">
+        </div>
+        <div class="card">
+            <img src="https://assets.myntassets.com/f_webp,w_163,c_limit,fl_progressive,dpr_2.0/assets/images/2026/FEBRUARY/26/2MT2bua5_c24335b9d32546699999d94d94a7019f.jpg"
+                alt="" width="100%">
+        </div>
+        <div class="card">
+            <img src="https://assets.myntassets.com/f_webp,w_163,c_limit,fl_progressive,dpr_2.0/assets/images/2026/FEBRUARY/26/2MT2bua5_c24335b9d32546699999d94d94a7019f.jpg"
+                alt="" width="100%">
+        </div>
+        <div class="card">
+            <img src="https://assets.myntassets.com/f_webp,w_163,c_limit,fl_progressive,dpr_2.0/assets/images/2026/FEBRUARY/26/2MT2bua5_c24335b9d32546699999d94d94a7019f.jpg"
+                alt="" width="100%">
+        </div>
+        <div class="card">
+            <img src="https://assets.myntassets.com/f_webp,w_163,c_limit,fl_progressive,dpr_2.0/assets/images/2026/FEBRUARY/26/2MT2bua5_c24335b9d32546699999d94d94a7019f.jpg"
+                alt="" width="100%">
+        </div>
+        <div class="card">
+            <img src="https://assets.myntassets.com/f_webp,w_163,c_limit,fl_progressive,dpr_2.0/assets/images/2026/FEBRUARY/26/2MT2bua5_c24335b9d32546699999d94d94a7019f.jpg"
+                alt="" width="100%">
+        </div>
+        <div class="card">
+            <img src="https://assets.myntassets.com/f_webp,w_163,c_limit,fl_progressive,dpr_2.0/assets/images/2026/FEBRUARY/26/2MT2bua5_c24335b9d32546699999d94d94a7019f.jpg"
+                alt="" width="100%">
+        </div>
+        <div class="card">
+            <img src="https://assets.myntassets.com/f_webp,w_163,c_limit,fl_progressive,dpr_2.0/assets/images/2026/FEBRUARY/26/2MT2bua5_c24335b9d32546699999d94d94a7019f.jpg"
+                alt="" width="100%">
+        </div>
+        <div class="card">
+            <img src="https://assets.myntassets.com/f_webp,w_163,c_limit,fl_progressive,dpr_2.0/assets/images/2026/FEBRUARY/26/2MT2bua5_c24335b9d32546699999d94d94a7019f.jpg"
+                alt="" width="100%">
+        </div>
+        <div class="card">
+            <img src="https://assets.myntassets.com/f_webp,w_163,c_limit,fl_progressive,dpr_2.0/assets/images/2026/FEBRUARY/26/2MT2bua5_c24335b9d32546699999d94d94a7019f.jpg"
+                alt="" width="100%">
+        </div>
+        <div class="card">
+            <img src="https://assets.myntassets.com/f_webp,w_163,c_limit,fl_progressive,dpr_2.0/assets/images/2026/FEBRUARY/26/2MT2bua5_c24335b9d32546699999d94d94a7019f.jpg"
+                alt="" width="100%">
+        </div>
+        <div class="card">
+            <img src="https://assets.myntassets.com/f_webp,w_163,c_limit,fl_progressive,dpr_2.0/assets/images/2026/FEBRUARY/26/2MT2bua5_c24335b9d32546699999d94d94a7019f.jpg"
+                alt="" width="100%">
+        </div>
+        <div class="card">
+            <img src="https://assets.myntassets.com/f_webp,w_163,c_limit,fl_progressive,dpr_2.0/assets/images/2026/FEBRUARY/26/2MT2bua5_c24335b9d32546699999d94d94a7019f.jpg"
+                alt="" width="100%">
+        </div>
+        <div class="card">
+            <img src="https://assets.myntassets.com/f_webp,w_163,c_limit,fl_progressive,dpr_2.0/assets/images/2026/FEBRUARY/26/2MT2bua5_c24335b9d32546699999d94d94a7019f.jpg"
+                alt="" width="100%">
+        </div>
+        <div class="card">
+            <img src="https://assets.myntassets.com/f_webp,w_163,c_limit,fl_progressive,dpr_2.0/assets/images/2026/FEBRUARY/26/2MT2bua5_c24335b9d32546699999d94d94a7019f.jpg"
+                alt="" width="100%">
+        </div>
+        <div class="card">
+            <img src="https://assets.myntassets.com/f_webp,w_163,c_limit,fl_progressive,dpr_2.0/assets/images/2026/FEBRUARY/26/2MT2bua5_c24335b9d32546699999d94d94a7019f.jpg"
+                alt="" width="100%">
+        </div>
+        <div class="card">
+            <img src="https://assets.myntassets.com/f_webp,w_163,c_limit,fl_progressive,dpr_2.0/assets/images/2026/FEBRUARY/26/2MT2bua5_c24335b9d32546699999d94d94a7019f.jpg"
+                alt="" width="100%">
+        </div>
+        <div class="card">
+            <img src="https://assets.myntassets.com/f_webp,w_163,c_limit,fl_progressive,dpr_2.0/assets/images/2026/FEBRUARY/26/2MT2bua5_c24335b9d32546699999d94d94a7019f.jpg"
+                alt="" width="100%">
+        </div>
+        <div class="card">
+            <img src="https://assets.myntassets.com/f_webp,w_163,c_limit,fl_progressive,dpr_2.0/assets/images/2026/FEBRUARY/26/2MT2bua5_c24335b9d32546699999d94d94a7019f.jpg"
+                alt="" width="100%">
+        </div>
+        <div class="card">
+            <img src="https://assets.myntassets.com/f_webp,w_163,c_limit,fl_progressive,dpr_2.0/assets/images/2026/FEBRUARY/26/2MT2bua5_c24335b9d32546699999d94d94a7019f.jpg"
+                alt="" width="100%">
+        </div>
+        <div class="card">
+            <img src="https://assets.myntassets.com/f_webp,w_163,c_limit,fl_progressive,dpr_2.0/assets/images/2026/FEBRUARY/26/2MT2bua5_c24335b9d32546699999d94d94a7019f.jpg"
+                alt="" width="100%">
+        </div>
+        <div class="card">
+            <img src="https://assets.myntassets.com/f_webp,w_163,c_limit,fl_progressive,dpr_2.0/assets/images/2026/FEBRUARY/26/2MT2bua5_c24335b9d32546699999d94d94a7019f.jpg"
+                alt="" width="100%">
+        </div>
+
+    </section>
+
+
+</body>
+
+</html>

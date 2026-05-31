@@ -1,0 +1,30 @@
+<script>
+    // const obj = {
+    //     user_name: "mohit",
+    //     email: "mohit@gmail.com",
+    //     contact: "9610101023",
+    //     print: function () {
+    //         console.log(this, "obj object")
+    //         setTimeout(
+    //             () => {
+    //                 console.log(this,"inside object")
+    //             }
+    //         )
+    //     }
+    // }
+
+    // obj.print()
+
+
+    const add = (...nums) => {
+        let sum = 0
+        for (let num of nums) {
+            sum += num
+        }
+        console.log(sum)
+    }
+
+    add(10, 20, 30, 100, 200, 30)
+    add(10, 20)
+
+</script>

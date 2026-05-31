@@ -1,0 +1,75 @@
+<script>
+    // const students = [
+    //     {
+    //         name: "Vihaan",
+    //         age: 23,
+    //         city: "Jaipur",
+    //     }
+    //     ,
+    //     {
+    //         username: "Rohit",
+    //         age: 24,
+    //         city: "Kota"
+    //     },
+    //     {
+    //         name: "Ganesh",
+    //         age: 27,
+    //         city: "Bikaner"
+    //     }
+    // ];
+
+    // for (let data of students) {
+    //     console.log(st.city)
+    // }
+
+
+    //     const employees = [
+    //         { name: "Mahesh", salary: 60000 },
+    //         { name: "Aman", salary: 45000 },
+    //         { name: "Ravi", salary: 52000 },
+    //         { name: "Dhube", salary: 72000 },
+    //         { name: "ANkit", salary: 23000 }
+    //     ];
+
+    //     function findSalery() {
+    //         const list = []
+    //         for (let emplyee of employees) {
+    //             if (emplyee.salary >= 50000) {
+    //                 list.push(emplyee.name)
+    //             }
+    //         }
+    //         return list
+    //     }
+
+    //   console.log( findSalery())
+
+
+    let products = [
+        { id: 1, name: "Laptop", price: 50000 },
+        { id: 2, name: "Phone", price: 20000 },
+        { id: 3, name: "Mouse", price: 100 },
+        { id: 4, name: "Pen", price: 200 }
+    ];
+
+
+    function find_Lowest_price_product(products) {
+        // let price = products[0].price   //100
+        // let prod = null;
+
+        const obj = products[0]
+        for (let i = 1; i < products.length; i++) {
+            if (products[i].price < price) {
+                price = products[i].price
+                prod = products[i].name
+            }
+        }
+        console.log(prod)
+
+
+
+    }
+
+    find_Lowest_price_product(products)
+
+
+</script>

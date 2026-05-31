@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Document</title>
+    <style>
+        .container {
+            width: 300px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            background-color: #eee;
+            margin: auto;
+        }
+
+        button {
+            width: 50px;
+            height: 50px;
+            font-size: 25px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <button onclick="countUp('increment')">+</button>
+        <h2>0</h2>
+        <button onclick="countUp('decrement')">-</button>
+    </div>
+
+    <script>
+        const h2 = document.querySelector('h2');
+        let count = 0;
+
+        function countUp(flag) {
+            if (flag === "increment") {
+                count++;
+            } else {
+                count--;
+            }
+
+            h2.innerText = count;
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+  .header {
+      background-color: red;
+      color: white;
+      font-size: 50px;
+  }
+
+  .demo1 {
+      color: green;
+  }
+
+  .footer {
+      background-color: blue;
+      color: white;
+      font-size: 50px;
+  }
+
+  .demo2 {
+      color: yellow;
+  }

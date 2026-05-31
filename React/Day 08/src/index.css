@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+.swiper-button-prev,
+.swiper-button-next {
+  background-color: white !important;
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow:  0px 1px 1px gray;
+}

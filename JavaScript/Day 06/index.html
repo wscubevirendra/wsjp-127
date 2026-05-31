@@ -1,0 +1,49 @@
+<script>
+    // let team = ["Sachin", "Virat", "Rohit", "Sehwag", "Jadeja", "Ashwin", "Bumraha", "Hardik"];
+
+
+    // for (let i = 0; i < team.length; i++) {
+    //     console.log(team[i])
+    // }
+
+    // let array = [100, 121, 122, 123, 233];
+
+    // for (let i = 0; i < array.length; i++) {
+    //     if (array[i] % 2 == 0) {
+    //         console.log(i)
+    //     }
+    // }
+
+    // let nums = [-1, 2, - 3, 6, -4, -8, 10]  //Print  Positive Number Only
+
+    // for (let i = 0; i < nums.length; i++) {
+    //     if (nums[i] < 0) {
+    //         console.log(nums[i])
+    //     }
+    // }
+
+    // let array = [100, 200, 400, 10]
+    // let largest = array[0]; //100---200---400--
+
+    // for (let i = 1; i < array.length; i++) {
+    //     if (largest > array[i]) {
+    //         largest = array[i]
+    //     }
+
+    //     //100<200
+    //     //200<400
+    //     //400<10
+    // }
+
+    // console.log(largest)
+    let nums = [100, 200, 300, 200, 300, 200, 200, 100, 10] //200-4
+    let findElement = 200;
+    let count = 0;
+
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] === findElement) {
+            count++
+        }
+    }
+    console.log(count, "find Element")
+</script>

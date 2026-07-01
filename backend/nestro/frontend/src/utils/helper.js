@@ -5,4 +5,17 @@ const client = axios.create({
     timeout: 3000,
 });
 
-export { client }
+function generateSlug(value) {
+
+    return value
+        .toLowerCase()
+        .trim()
+        .replace(/[^\w\s-]/g, "")
+        .replace(/\s+/g, "-")
+        .replace(/-+/g, "-");
+
+}
+
+
+
+export { client ,generateSlug}

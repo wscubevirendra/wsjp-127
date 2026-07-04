@@ -10,7 +10,7 @@ import {
     FiTag
 } from "react-icons/fi";
 
-import { generateSlug } from "@/app/utils/helper";
+import { generateSlug } from "@/utils/helper";
 
 
 export default function AddCategoryUI() {

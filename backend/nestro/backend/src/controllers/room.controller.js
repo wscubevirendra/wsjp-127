@@ -43,7 +43,11 @@ const edit = async (req, res) => {
 
 const read = async (req, res) => {
     try {
-        const room_type = await RoomModel.find();
+         const query = req.query;
+        const limit=query.limit ? parseInt(req.query.limit) : 0;
+        const filter = {};
+        if (query.status) filter.status = query.status === "true"
+        const room_type = await RoomModel.find(filter);
 
         return res.status(200).json({
             message: "Room type data find",

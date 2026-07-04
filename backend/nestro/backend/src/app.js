@@ -10,7 +10,9 @@ import productRouter from "./routers/product.router.js";
 const server = express();
 const PORT = process.env.PORT
 server.use(express.json())
+server.use(express.urlencoded({ extended: true }));
 server.use(cors({origin:"http://localhost:3000"}))
+
 
 
 server.get("/", (req, res) => {

@@ -1,5 +1,5 @@
 import ProductModel from "../models/product.model.js";
-import { sendCreated, sendConflict, sendNotFound, sendServerError, sendSuccess } from "../utils/response.js";
+import { sendCreated, sendConflict, sendNotFound, sendServerError, sendSuccess, sendBadRequest } from "../utils/response.js";
 
 const create = async (req, res) => {
     try {
@@ -7,7 +7,7 @@ const create = async (req, res) => {
         console.log(req.body)
         const product = await ProductModel.findOne({ name: req.body.name });
         if (product) return sendConflict(res,)
-       await ProductModel.create({
+        await ProductModel.create({
             ...req.body,
             thumbnail: image_url
         });
@@ -22,12 +22,33 @@ const create = async (req, res) => {
 
 const read = async (req, res) => {
     try {
-        const products = await ProductModel.find();
+        const query = req.query;
+        const limit = query.limit ? parseInt(req.query.limit) : 0;
+        const skip = query.skip || 0;
+        const filter = {};
+        if (query.status) filter.status = query.status === "true";
+        if (query.best_seller) filter.bestSeller = query.bestSeller === "true";
+        if (query.featured) filter.featured = query.featured === "true";
+        if (query.newArrival) filter.newArrival = query.newArrival === "true";
+        if (query.stock) filter.stock = query.stock === "true";
+        const products = await ProductModel.find(filter).populate([
+            {
+                select:"_id name slug",
+                path:"categoryId"
+            },
+            {
+                select:"_id name slug",
+                path:"roomId"
+            }
+        ]).limit(limit).skip(skip);
+        const tota_product_count = await ProductModel.find().countDocuments();
 
         return res.status(200).json({
             message: "Product data find",
             success: true,
-            products: products
+            products: products,
+            total: tota_product_count,
+            pages: Math.ceil(tota_product_count / 20)
         })
 
 
@@ -93,10 +114,60 @@ const deleteById = async (req, res) => {
 
 }
 
+const addImages = async (req, res) => {
+    try {
+
+        const { id } = req.params;
+        console.log(req.files, "id")
+        const product = await ProductModel.findById({ _id: id });
+
+        if (!product) return sendNotFound();
+        // Check if images are uploaded
+        if (!req.files || req.files.length === 0) {
+            return res.status(400).json({
+                success: false,
+                message: "Please upload images"
+            });
+        }
+        // Cloudinary image URLs
+        const imageUrls = req.files.map(file => file.path);
+        product.images.push(...imageUrls);
+        await product.save();
+        sendSuccess(res)
+    } catch (error) {
+        return sendServerError(res)
+    }
+
+}
+const statusById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { field } = req.body;
+        const product = await ProductModel.findById(id);
+        if (!product) return sendNotFound(res);
+        await ProductModel.findByIdAndUpdate(
+            { _id: id },
+            {
+                $set: {
+                    [field]: !product[field]
+                }
+            }
+        )
+
+        return sendSuccess(res, "Status update successfully")
+
+    } catch (error) {
+        return sendServerError(res)
+    }
+
+}
+
 export {
     create,
     read,
     statusUpdate,
     deleteById,
-    readById
+    readById,
+    addImages,
+    statusById
 }

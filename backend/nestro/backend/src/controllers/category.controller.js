@@ -51,7 +51,12 @@ const edit = async (req, res) => {
 
 const read = async (req, res) => {
     try {
-        const category = await CategoryModel.find();
+        const query = req.query;
+        const limit=query.limit ? parseInt(req.query.limit) : 0;
+        const filter = {};
+        if (query.status) filter.status = query.status === "true"
+
+        const category = await CategoryModel.find(filter).limit(limit);
 
         return res.status(200).json({
             message: "Category data find",

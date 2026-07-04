@@ -1,7 +1,10 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@website/*": ["./src/components/website/*"],
+      "@admin/*": ["./src/components/admin/*"],
     }
   }
 }

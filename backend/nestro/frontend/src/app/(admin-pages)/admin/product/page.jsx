@@ -1,7 +1,10 @@
 import ActionDropdown from "@/components/admin/ActionDropdown"
-import Button from "@/components/admin/Button";
+import Button from "@/admin/Button";
 import StatusBtn from "@/components/admin/StatusBtn";
 import { fetchProduct } from "@/utils/api"
+import { CiCirclePlus } from "react-icons/ci";
+import Link from "next/link";
+
 
 export default async function AdminTable() {
     const product = await fetchProduct();
@@ -24,6 +27,7 @@ export default async function AdminTable() {
                             <th className="p-3">Price</th>
                             <th className="p-3">Thumbnail</th>
                             <th className="p-3">Status</th>
+                            <th className="p-3">Add</th>
                             <th className="p-3">Action</th>
                         </tr>
                     </thead>
@@ -51,6 +55,12 @@ export default async function AdminTable() {
                                     </td>
 
                                     <StatusBtn status={prod.status} path={`/product/status-update/${prod._id}`} />
+                                    <td>
+                                        <Link href={`/admin/product/add-images/${prod._id}`}>
+                                            <CiCirclePlus className="text-2xl cursor-pointer" />
+                                        </Link>
+
+                                    </td>
 
                                     <ActionDropdown module={`/product`} id={prod._id} />
                                 </tr>

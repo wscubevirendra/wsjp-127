@@ -4,7 +4,7 @@ import SectionHeader from '@website/ui/SectionHeader'
 import { fetchCategory } from '@/utils/api'
 
 export default async function Categories() {
-  const categories = await fetchCategory()
+  const categories = await fetchCategory({status:true})
   return (
     <section>
       <SectionHeader tag="Shop by" title="Categories" showLink linkHref="/store" />
@@ -40,7 +40,7 @@ export default async function Categories() {
         {categories.data.map((category) => (
           <Link
             key={category._id}
-            href={`/store?category=${category._id}`}
+            href={`/store?category=${category.slug}`}
             className="flex flex-col items-center gap-2 group"
           >
             <div className="relative w-[88px] h-[88px] rounded-full border-2 border-[#E8E0D5] overflow-hidden bg-white group-hover:border-[#8B5E3C] group-hover:-translate-y-1 transition-all duration-300">

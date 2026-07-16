@@ -1,7 +1,9 @@
 import '../globals.css'
 import { Inter } from 'next/font/google'
 import Navbar from '@website/layout/Navbar'
-import Footer from '@website/layout/Navbar'
+import Footer from '@website/layout/Footer'
+import StoreProvider from '@/redux/StoreProvider'
+import { getProfile } from '@/utils/api'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -14,14 +16,22 @@ export const metadata = {
   description: 'Scandinavian-inspired furniture for modern living.',
 }
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+
+  let user = null;
+  const response = await getProfile();
+  if (response.success) {
+    user = response.data
+  }
   return (
     <html lang="en">
-      <body className={`${inter.className} min-h-screen bg-[#F8F5F1]`}>
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-      </body>
+      <StoreProvider>
+        <body className={`${inter.className} min-h-screen bg-[#F8F5F1]`}>
+          <Navbar user={user} />
+          <main>{children}</main>
+          <Footer />
+        </body>
+      </StoreProvider>
     </html>
   )
 }

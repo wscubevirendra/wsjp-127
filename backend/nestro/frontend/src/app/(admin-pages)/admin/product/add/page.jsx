@@ -89,7 +89,7 @@ export default function AddCategoryPage() {
             if (response.data.success) {
                 toast.success(response.data.message);
 
-                router.push("/admin/product");
+                // router.push("/admin/product");
             }
         } catch (error) {
             toast.error(

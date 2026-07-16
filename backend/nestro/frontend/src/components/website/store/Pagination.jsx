@@ -1,8 +1,20 @@
+'use client'
+
 import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react'
+import { useSearchParams,useRouter } from 'next/navigation';
 
-const pages = [1, 2, 3]
+export default function Pagination({pages}) {
+  const seachParams=useSearchParams()
+  const currentPage = parseInt(seachParams.get('page')) || 1;
+  const router=useRouter()
+  const pageNumbers = Array.from({ length: pages }, (_, i) => i + 1);
 
-export default function Pagination() {
+  function handlePageChange(pageNumber) {
+    const searchParams = new URLSearchParams(seachParams.toString());
+    searchParams.set('page', pageNumber);
+    router.push(`/store?${searchParams.toString()}`);
+  }
+
   return (
     <div className="flex flex-col items-center gap-4 mt-8">
       {/* Page numbers */}
@@ -15,19 +27,20 @@ export default function Pagination() {
           <IconChevronLeft size={14} stroke={1.8} />
         </button>
 
-        {pages.map((page, index) => (
+        {pageNumbers.map((page, index) => (
 
-       
-            <button
+         <button
+         onClick={()=>handlePageChange(page)}
               aria-label={`Page ${page}`}
               className={`w-8 h-8 rounded-md border text-[12px] font-medium transition-colors ${
-                page === 1
+                currentPage === page
                   ? 'bg-[#8B5E3C] text-white border-[#8B5E3C]'
                   : 'border-[#E8E0D5] text-[#6B7280] hover:border-[#C6A27E]'
               }`}
             >
               {page}
             </button>
+          
           
         ))}
 
@@ -40,10 +53,6 @@ export default function Pagination() {
         </button>
       </div>
 
-      {/* Load More */}
-      <button className="border border-[#C6A27E] text-[#8B5E3C] text-[11px] tracking-[0.08em] uppercase px-8 py-2.5 rounded font-medium hover:bg-[#F0EBE3] transition-colors">
-        Load More Products
-      </button>
     </div>
   )
 }

@@ -4,15 +4,17 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import connectDB from "./config/connectDb.js";
+import cookieParser from "cookie-parser"
 import categoryRouter from "./routers/category.router.js";
 import roomRouter from "./routers/room.router.js";
 import productRouter from "./routers/product.router.js";
+import userRouter from "./routers/user.router.js";
 const server = express();
 const PORT = process.env.PORT
 server.use(express.json())
 server.use(express.urlencoded({ extended: true }));
-server.use(cors({origin:"http://localhost:3000"}))
-
+server.use(cookieParser())
+server.use(cors({ origin: "http://localhost:3000", credentials: true }))
 
 
 server.get("/", (req, res) => {
@@ -25,6 +27,7 @@ server.get("/", (req, res) => {
 server.use("/api/category", categoryRouter);
 server.use("/api/room-type", roomRouter);
 server.use("/api/product", productRouter);
+server.use("/api/user", userRouter);
 
 server.listen(PORT, () => {
     connectDB()

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
     MdNotifications,
     MdPerson,
@@ -9,8 +9,7 @@ import {
 
 
 export default function Header() {
-
-
+  
     const [profile, setProfile] = useState(false);
 
 

@@ -12,14 +12,13 @@ const studentSchema = new mongoose.Schema({
     },
     age: {
         type: Number,
-        required: true,
+        required: true
     },
     status: {
         type: Boolean,
-        default: true,
+        default: true
     }
-})
+});
 
 const StudentModel = mongoose.model("students", studentSchema);
-export default StudentModel;
-
+export default StudentModel

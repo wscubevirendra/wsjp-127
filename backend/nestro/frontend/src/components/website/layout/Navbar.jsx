@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import {
@@ -17,15 +17,38 @@ const navLinks = [
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
   { label: 'Checkout', href: '/checkout' },
-  { label: 'Sign In', href: '/auth' },
+
 ]
+
+import { useSelector, useDispatch } from 'react-redux'
+import { emptyCart, lsToCart } from '@/redux/features/cartSlice'
+import { client } from '@/utils/helper'
+import { useRouter } from 'next/navigation'
 
 const iconBtn =
   'w-9 h-9 rounded-full flex items-center justify-center text-[#444444] hover:bg-[#F0EBE3] transition-all'
 
-export default function Navbar() {
+export default function Navbar({ user = null }) {
+  const router=useRouter()
   const pathname = usePathname()
   const [menuOpen, setMenuOpen] = useState(false)
+
+  const cart = useSelector((store) => store.cart)
+  const dispatcher = useDispatch();
+  useEffect(
+    () => {
+      dispatcher(lsToCart());
+    },
+    []
+  )
+
+
+  async function logoutHanlder() {
+    const response = await client("user/logout");
+    dispatcher(emptyCart())
+       // Refresh server components
+      router.refresh();
+  }
 
   return (
     <header className="sticky top-0 z-[300] bg-[#FAFAF9]/95 backdrop-blur-md border-b border-[#E8E0D5] h-[58px] flex items-center justify-between px-4 md:px-8">
@@ -41,15 +64,33 @@ export default function Navbar() {
           <Link
             key={link.href}
             href={link.href}
-            className={`text-[11px] tracking-[0.06em] rounded-md px-3 py-1.5 transition-colors ${
-              pathname === link.href
-                ? 'bg-[#F0EBE3] text-[#8B5E3C]'
-                : 'text-[#6B7280] hover:bg-[#F0EBE3] hover:text-[#8B5E3C]'
-            }`}
+            className={`text-[11px] tracking-[0.06em] rounded-md px-3 py-1.5 transition-colors ${pathname === link.href
+              ? 'bg-[#F0EBE3] text-[#8B5E3C]'
+              : 'text-[#6B7280] hover:bg-[#F0EBE3] hover:text-[#8B5E3C]'
+              }`}
           >
             {link.label}
           </Link>
         ))}
+
+        {
+          user !== null ?
+            <button onClick={logoutHanlder} className="text-[11px] tracking-[0.06em] rounded-md px-3 py-1.5 transition-colors 
+             'text-[#6B7280] hover:bg-[#F0EBE3] hover:text-[#8B5E3C]">Logout </button >
+            :
+            <Link
+              href="signin"
+              className={`text-[11px] tracking-[0.06em] rounded-md px-3 py-1.5 transition-colors ${pathname === "signin"
+                ? 'bg-[#F0EBE3] text-[#8B5E3C]'
+                : 'text-[#6B7280] hover:bg-[#F0EBE3] hover:text-[#8B5E3C]'
+                }`}
+            >
+              Sign In
+            </Link>
+
+        }
+
+
       </nav>
 
       {/* Desktop Right Icons */}
@@ -58,20 +99,23 @@ export default function Navbar() {
           <IconSearch size={18} stroke={1.8} />
         </button>
 
-        <Link href="/checkout" aria-label="Cart" className={`relative ${iconBtn}`}>
+
+        <Link href="/cart" aria-label="Cart" className={`relative ${iconBtn}`}>
           <IconShoppingBag size={18} stroke={1.8} />
           <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#8B5E3C] text-white text-[10px] rounded-full flex items-center justify-center leading-none">
-            3
+            {cart?.items.length || 0}
           </span>
         </Link>
 
         <Link
           href="/profile"
           aria-label="Profile"
-          className="w-9 h-9 rounded-full border border-[#C6A27E] flex items-center justify-center text-[#8B5E3C] hover:bg-[#C6A27E] hover:text-white transition-all"
+          className="w-9 h-9 rounded-full border flex gap-4 border-[#C6A27E] flex items-center justify-center text-[#8B5E3C] hover:bg-[#C6A27E] hover:text-white transition-all"
         >
           <IconUser size={18} stroke={1.8} />
         </Link>
+        <span className='text-sm text-gray-500 font-bold'>{user?.name || ""}</span>
+
       </div>
 
       {/* Mobile: icons + hamburger */}
@@ -86,6 +130,7 @@ export default function Navbar() {
             3
           </span>
         </Link>
+
 
         <Link
           href="/profile"
@@ -112,11 +157,10 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className={`text-[12px] tracking-[0.06em] rounded-md px-3 py-2 w-full transition-colors ${
-                pathname === link.href
-                  ? 'bg-[#F0EBE3] text-[#8B5E3C]'
-                  : 'text-[#6B7280] hover:bg-[#F0EBE3] hover:text-[#8B5E3C]'
-              }`}
+              className={`text-[12px] tracking-[0.06em] rounded-md px-3 py-2 w-full transition-colors ${pathname === link.href
+                ? 'bg-[#F0EBE3] text-[#8B5E3C]'
+                : 'text-[#6B7280] hover:bg-[#F0EBE3] hover:text-[#8B5E3C]'
+                }`}
             >
               {link.label}
             </Link>

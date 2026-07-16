@@ -1,4 +1,6 @@
 import ProductModel from "../models/product.model.js";
+import RoomModel from "../models/room.model.js";
+import CategoryModel from "../models/category.model.js";
 import { sendCreated, sendConflict, sendNotFound, sendServerError, sendSuccess, sendBadRequest } from "../utils/response.js";
 
 const create = async (req, res) => {
@@ -23,14 +25,51 @@ const create = async (req, res) => {
 const read = async (req, res) => {
     try {
         const query = req.query;
-        const limit = query.limit ? parseInt(req.query.limit) : 0;
-        const skip = query.skip || 0;
+        const pages = query.page || 1;
+   
+        const limit = query.limit ? parseInt(req.query.limit) : 2;
+        const skip = limit * (pages - 1);
         const filter = {};
+        const sortFilter={};
+
+        if(query.sort) {
+            if(query.sort === "asc") {
+                sortFilter.salePrice=1;
+            }else if(query.sort === "desc") {
+                sortFilter.salePrice=-1;
+            }else if(query.sort === "featured") {
+                sortFilter.createdAt=-1;
+            }else if(query.sort === "newest") {
+                sortFilter.featured=-1;
+            }
+        }
+       
         if (query.status) filter.status = query.status === "true";
         if (query.best_seller) filter.bestSeller = query.bestSeller === "true";
         if (query.featured) filter.featured = query.featured === "true";
         if (query.newArrival) filter.newArrival = query.newArrival === "true";
-        if (query.stock) filter.stock = query.stock === "true";
+        if (query.stock) filter.stock = query.stock === "inStock";
+        if(query.category) {
+            //find by slug and get the id of category and then filter by categoryId
+            //[sofa,bed,table] => [id1,id2,id3]
+            const categoryIds=await CategoryModel.find({slug:{$in:query.category.split(',')}}).select('_id');
+           
+            filter.categoryId = { $in: categoryIds };
+        }
+
+        if(query.room) {
+            //find by slug and get the id of room and then filter by roomId
+            //[living-room,bedroom] => [id1,id2]
+            const roomIds=await RoomModel.find({slug:{$in:query.room.split(',')}}).select('_id');
+           
+            filter.roomId = { $in: roomIds };
+        }
+
+        if(query.min && query.max) {
+            filter.salePrice={ $gte: parseInt(query.min), $lte: parseInt(query.max) };
+            
+        }
+
         const products = await ProductModel.find(filter).populate([
             {
                 select:"_id name slug",
@@ -40,7 +79,7 @@ const read = async (req, res) => {
                 select:"_id name slug",
                 path:"roomId"
             }
-        ]).limit(limit).skip(skip);
+        ]).limit(limit).skip(skip).sort(sortFilter);
         const tota_product_count = await ProductModel.find().countDocuments();
 
         return res.status(200).json({
@@ -48,7 +87,7 @@ const read = async (req, res) => {
             success: true,
             products: products,
             total: tota_product_count,
-            pages: Math.ceil(tota_product_count / 20)
+            pages: Math.ceil(tota_product_count / limit)
         })
 
 

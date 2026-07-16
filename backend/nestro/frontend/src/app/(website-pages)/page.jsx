@@ -8,8 +8,10 @@ import CraftSection from '@website/home/CraftSection'
 import USPStrip from '@website/home/USPStrip'
 import Testimonials from '@website/home/Testimonials'
 import Newsletter from '@website/home/Newsletter'
+import { fetchProduct } from '@/utils/api'
 
-export default function HomePage() {
+export default async function HomePage() {
+  const products=await fetchProduct()
   return (
     <>
       <Container className="mt-6">
@@ -21,7 +23,7 @@ export default function HomePage() {
       </Container>
 
       <Container className="mt-16">
-        <BestSellers />
+        <BestSellers data={products.data} />
       </Container>
 
       <Container className="mt-16">

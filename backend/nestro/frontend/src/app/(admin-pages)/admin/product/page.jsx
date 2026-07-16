@@ -1,5 +1,4 @@
 import ActionDropdown from "@/components/admin/ActionDropdown"
-import Button from "@/admin/Button";
 import StatusBtn from "@/components/admin/StatusBtn";
 import { fetchProduct } from "@/utils/api"
 import { CiCirclePlus } from "react-icons/ci";
